@@ -1,73 +1,103 @@
-Objective:
-To create a simple AI chatbot that reads questions and answers from a CSV file, processes them using natural language processing (NLP), and interacts with the user through a graphical interface built using Tkinter.
+# AI Chatbot using Tkinter and NLP
 
-Module 1: Data Preparation and Processing
-This module processes the CSV data to prepare it for chatbot use.
+## 📌 Project Explanation
 
-Steps:
-Read CSV File:
+This project is a simple **AI chatbot** application developed using **Python** and **Tkinter** for the graphical user interface. It uses **Natural Language Processing (NLP)** techniques from the `nltk` library to process a dataset of questions and answers stored in a CSV file.
 
-Use pandas to load a CSV file with two columns: Question and Answer.
+The chatbot works in two main modules:
 
-Tokenization:
+- **Module 1 (Data Preparation):** Processes each question using tokenization, stopword removal, POS tagging, and lemmatization, and stores the cleaned data in a new CSV file.
+- **Module 2 (User Interaction):** Allows users to interact through a GUI, where the chatbot responds with relevant answers using fuzzy matching if an exact match is not found.
 
-Use nltk.word_tokenize() to split each question into words.
+---
 
-Stopword Removal:
+## ✅ Requirements
 
-Remove common stopwords using NLTK’s stopword list.
+To run this project, you need to have the following Python libraries installed:
 
-POS Tagging and Lemmatization:
+```bash
+pip install pandas
+pip install nltk
+pip install fuzzywuzzy
+pip install python-Levenshtein
+Also, download the required nltk packages:
 
-Use nltk.pos_tag() and WordNetLemmatizer to reduce words to their base form based on part of speech.
+python
+Copy
+Edit
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+📂 Project Structure
+bash
+Copy
+Edit
+AI_Chatbot_Tkinter/
+│
+├── qa.csv                # Original CSV with raw Questions and Answers
+├── processed_qa.csv      # CSV with processed questions and original answers
+├── preprocess_data.py    # Python script to process data and create processed_qa.csv
+├── chatbot_app.py        # Main GUI chatbot application using Tkinter
+└── README.md             # Project documentation (this file)
+▶️ How to Run the Project
+Step 1: Prepare the Dataset
+Make sure you have a CSV file named qa.csv with two columns:
 
-Combine with Hyphen:
+Column 1: Questions
 
-Join the cleaned tokens using a hyphen (-) to form a processed version of the question.
+Column 2: Answers
 
-Map to Answers:
+Step 2: Run Preprocessing
+Process the questions by running:
 
-Link each processed question to its original answer.
+bash
+Copy
+Edit
+python preprocess_data.py
+This will generate processed_qa.csv with cleaned question formats.
 
-Save to Output CSV:
+Step 3: Launch the Chatbot
+Start the GUI application by running:
 
-Store the processed data in a new CSV (e.g., processed_qa.csv) using pandas.
+bash
+Copy
+Edit
+python chatbot_app.py
+The chatbot window will open. You can type a question, and it will respond based on the processed CSV data.
 
-Module 2: User Interaction and Response Retrieval (Using Tkinter)
-This module provides a GUI using Tkinter for user interaction.
+📎 Example
+User Input:
+What is artificial intelligence?
 
-Steps:
-User Input Box:
+Bot Response:
+Artificial intelligence is the simulation of human intelligence by machines.
 
-Use a Tkinter Entry widget to accept a question from the user.
+📌 Notes
+The chatbot uses fuzzy matching to find the closest question in the dataset if an exact match is not found.
 
-Preprocess the Input:
+The GUI maintains chat history and is designed with basic styling using Tkinter.
 
-Apply the same steps (tokenization, stopword removal, lemmatization, and join with hyphen).
+You can modify the chatbot_app.py file to customize themes, fonts, or behavior.
 
-Answer Retrieval:
+📘 License
+This project is created for academic and educational purposes.
 
-Compare the user’s processed question with those in processed_qa.csv.
+yaml
+Copy
+Edit
 
-Use fuzzy matching if there’s no exact match.
+---
 
-Display Response:
+You can copy and paste this into a file named `README.md` and place it in the root of your GitHub repository.
 
-Show the answer in a separate Label or Text widget.
+Let me know if you also want me to generate the Python files (`preprocess_data.py` and `chatbot_app.py`) with full code.
 
-Show a fallback response if no match is found.
 
-Chat History:
 
-Append each question and answer to a chat window (e.g., using Text widget or a scrolling Listbox).
 
-Theme Customization (Optional):
 
-Use Tkinter’s ttk.Style() or custom background and font settings to personalize the chat window.
 
-Additional Enhancements (Implemented or Optional)
-Feature	Description
-Chat History	Maintains a running log of all Q&A
-Fuzzy Matching	Finds closest matching question if input is different
-Colorful GUI	Background color, font styles can be changed
-Scrollable Chat	Can scroll to view full conversation
+
+
